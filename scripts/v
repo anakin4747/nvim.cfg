@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PIPE_PATH="/tmp/nvim.pipe"
+PIPE_PATH="/tmp/v.pipe"
 
 if pstree -s $$ | grep -q nvim; then
 	# echo "in neovim"
@@ -8,8 +8,8 @@ if pstree -s $$ | grep -q nvim; then
 else
 	# echo "Not in neovim"
 	if [ "$#" -eq "0" ]; then
-		nvim +te --listen "$PIPE_PATH"
+		nvim +te --listen "$PIPE_PATH" --startuptime /tmp/nvimstartup
 	else
-		nvim $* --listen "$PIPE_PATH"
+		nvim $* --listen "$PIPE_PATH" --startuptime /tmp/nvimstartup
 	fi
 fi
