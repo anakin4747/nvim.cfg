@@ -1,4 +1,5 @@
 
+runtime abbrev.vim
 runtime options.vim
 
 runtime term.vim
