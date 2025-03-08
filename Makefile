@@ -12,6 +12,10 @@ SCRIPTS := $(wildcard $(THIS_DIR)/scripts/*)
 .PHONY: install-scripts $(SCRIPTS)
 install-scripts: $(SCRIPTS)
 
+.PHONY: uninstall-scripts
+uninstall-scripts:
+	rm -r $(foreach s,$(SCRIPTS),$(DESTDIR)$(BINDIR)/$(notdir $s))
+
 $(DESTDIR)$(BINDIR):
 	mkdir -p $(DESTDIR)$(BINDIR)
 
