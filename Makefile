@@ -7,7 +7,7 @@ NVIM_CONFIG ?= $(XDG_DATA_HOME)/nvim
 
 THIS_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
-SCRIPTS := $(wildcard scripts/*)
+SCRIPTS := $(wildcard $(THIS_DIR)/scripts/*)
 
 .PHONY: install-scripts $(SCRIPTS)
 install-scripts: $(SCRIPTS)
@@ -16,7 +16,7 @@ $(DESTDIR)$(BINDIR):
 	mkdir -p $(DESTDIR)$(BINDIR)
 
 $(SCRIPTS): $(DESTDIR)$(BINDIR)
-	ln -sf $(THIS_DIR)/$@ $(DESTDIR)$(BINDIR)/$(notdir $@)
+	ln -sf $@ $(DESTDIR)$(BINDIR)/$(notdir $@)
 
 install-cfg:
 	-rm -r $(NVIM_CONFIG)
