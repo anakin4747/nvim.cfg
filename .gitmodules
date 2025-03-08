@@ -7,3 +7,9 @@
 [submodule "pack/gruvbox/start/gruvbox"]
 	path = pack/gruvbox/start/gruvbox
 	url = https://github.com/ellisonleao/gruvbox.nvim.git
+[submodule "pack/nvim-telescope/start/telescope.nvim"]
+	path = pack/nvim-telescope/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "pack/plenary.nvim/start/plenary.nvim"]
+	path = pack/plenary.nvim/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
