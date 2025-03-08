@@ -4,3 +4,6 @@
 [submodule "pack/nvim-treesitter/start/nvim-treesitter"]
 	path = pack/nvim-treesitter/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "pack/gruvbox/start/gruvbox"]
+	path = pack/gruvbox/start/gruvbox
+	url = https://github.com/ellisonleao/gruvbox.nvim.git
