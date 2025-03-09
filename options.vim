@@ -45,3 +45,6 @@ set nomodeline
 set shortmess+=I
 
 set foldmethod=indent
+
+" Display errors and breakpoints over numbers
+set signcolumn=number
