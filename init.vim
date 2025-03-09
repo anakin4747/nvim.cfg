@@ -1,11 +1,9 @@
 
 runtime abbrev.vim
-runtime options.vim
-
-runtime term.vim
-
 runtime autocmds.vim
 runtime color.vim
+runtime options.vim
+runtime term.vim
 
 map <Space>of :browse oldfiles<Enter>
 map ZZ :silent w! <Enter>: bd<Enter>
