@@ -2,3 +2,4 @@ Figure out how treesitter starts automatically
 Put gruvbox in a colors dir
 Difftool with nvim server
 Have a nvim solution for :h terminal-osc7 instead of zshrc
+Contribute to treesitter parser for vimscript since it sucks for `%substitue///`
