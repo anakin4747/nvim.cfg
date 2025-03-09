@@ -48,3 +48,5 @@ set foldmethod=indent
 
 " Display errors and breakpoints over numbers
 set signcolumn=number
+
+set dictionary=/usr/share/dict/american-english,/usr/share/dict/french
