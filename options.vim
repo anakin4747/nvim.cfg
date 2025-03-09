@@ -43,3 +43,5 @@ set nomodeline
 
 " No intro message
 set shortmess+=I
+
+set foldmethod=indent
