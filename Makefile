@@ -11,6 +11,12 @@ THIS_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 help:
 	@./util/list-make-targets $(MAKEFILE_LIST)
 
+.PHONY: install
+install: install-scripts install-cfg submodules # Install plugins, configuration and scripts
+
+.PHONY: uninstall
+uninstall: uninstall-scripts uninstall-cfg # Uninstall configuration and scripts
+
 SUBMODULES := $(shell $(THIS_DIR)/util/gitmodules)
 
 .PHONY: submodules
@@ -25,15 +31,18 @@ install-scripts: $(SCRIPTS) # Install scripts from ./scripts to $(DESTDIR)$(BIND
 
 .PHONY: uninstall-scripts
 uninstall-scripts: # Uninstall scripts from $(DESTDIR)$(BINDIR)
-	rm -r $(foreach s,$(SCRIPTS),$(DESTDIR)$(BINDIR)/$(notdir $s))
+	-sudo rm -r $(foreach s,$(SCRIPTS),$(DESTDIR)$(BINDIR)/$(notdir $s))
 
 $(DESTDIR)$(BINDIR):
 	mkdir -p $(DESTDIR)$(BINDIR)
 
 $(SCRIPTS): $(DESTDIR)$(BINDIR)
-	ln -sf $@ $(DESTDIR)$(BINDIR)/$(notdir $@)
+	sudo ln -sf $@ $(DESTDIR)$(BINDIR)/$(notdir $@)
 
-install-cfg: # Install config
-	-rm -r $(NVIM_CONFIG)
+.PHONY: install-cfg
+install-cfg: uninstall-cfg # Install config
 	ln -s $(THIS_DIR) $(NVIM_CONFIG)
 
+.PHONY: uninstall-cfg
+uninstall-cfg: # Uninstall config
+	-rm -r $(NVIM_CONFIG)
