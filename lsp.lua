@@ -38,3 +38,5 @@ do -- Add rounded borders to lsp popups
         border = 'rounded',
     })
 end
+
+require('lazydev').setup()
