@@ -7,3 +7,14 @@ augroup unfold
     autocmd! unfold
     autocmd BufRead * normal zR
 augroup END
+
+function! TrimTrailingWhitespace()
+    let view = winsaveview()
+    %substitute/\s\+$//e
+    call winrestview(view)
+endfunction
+
+augroup trimtrailing
+    autocmd! trimtrailing
+    autocmd BufWritePre * call TrimTrailingWhitespace()
+augroup END
