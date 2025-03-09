@@ -4,6 +4,7 @@ runtime autocmds.vim
 runtime color.vim
 runtime options.vim
 runtime term.vim
+runtime treesitter.lua
 
 map <Space>of :browse oldfiles<Enter>
 map ZZ :silent w! <Enter>: bd<Enter>
