@@ -19,3 +19,6 @@
 [submodule "pack/undotree/start/undotree"]
 	path = pack/undotree/start/undotree
 	url = https://github.com/mbbill/undotree.git
+[submodule "pack/comment/start/comment"]
+	path = pack/comment/start/comment
+	url = https://github.com/numToStr/Comment.nvim.git
