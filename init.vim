@@ -8,5 +8,4 @@ runtime lsp.lua
 runtime options.vim
 runtime term.vim
 runtime treesitter.lua
-
-map ZZ :silent w! <Enter>: bd<Enter>
+runtime ZZ.vim

@@ -47,6 +47,8 @@ local global_keymaps = {
     -- Manpage undercursor
     { 'n', '<leader>K', function () vim.cmd('vert Man ' .. vim.fn.expand("<cword>")) end, 'Open Man Page for word undercursor' },
 
+    { 'n', 'ZZ', ':call ZZ()<CR>', 'Call ZZ function' },
+
     -- Telescope
     { 'n', '<leader>au',    builtin.autocommands, 'Telescope :autocmds' },
     { 'n', '<leader>bu',    builtin.buffers,      'Telescope :buffers' },
