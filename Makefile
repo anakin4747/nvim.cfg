@@ -11,6 +11,13 @@ THIS_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 help:
 	@./util/list-make-targets $(MAKEFILE_LIST)
 
+SUBMODULES := $(shell $(THIS_DIR)/util/gitmodules)
+
+.PHONY: submodules
+submodules: $(SUBMODULES) # Clone git submodules
+$(SUBMODULES):
+	git submodule update --init --recursive
+
 SCRIPTS := $(wildcard $(THIS_DIR)/scripts/*)
 
 .PHONY: install-scripts $(SCRIPTS)
