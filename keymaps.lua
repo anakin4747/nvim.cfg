@@ -5,14 +5,14 @@ local builtin = require('telescope.builtin')
 
 local global_keymaps = {
     -- Navigate buffers
-    { { 'n', 'i', 'x', 'v', 't' }, '<C-h>', '<C-\\><C-n>:bprev<CR>', 'TODO: Previous terminal buffer' },
-    { { 'n', 'i', 'x', 'v', 't' }, '<C-l>', '<C-\\><C-n>:bnext<CR>', 'TODO: Next terminal buffer' },
-    { { 'n', 'v' },                '<S-h>', '<C-\\><C-n>:bprev<CR>', 'Previous non-terminal buffer' },
-    { { 'n', 'v' },                '<S-l>', '<C-\\><C-n>:bnext<CR>', 'Next non-terminal buffer' },
+    { { 'n', 'i', 'x', 'v', 't' }, '<C-h>', '<C-\\><C-n>:call PrevTermBuf()<CR>',    'Previous terminal buffer' },
+    { { 'n', 'i', 'x', 'v', 't' }, '<C-l>', '<C-\\><C-n>:call NextTermBuf()<CR>',    'Next terminal buffer' },
+    { { 'n', 'v' },                '<S-h>', '<C-\\><C-n>:call PrevNonTermBuf()<CR>', 'Previous non-terminal buffer' },
+    { { 'n', 'v' },                '<S-l>', '<C-\\><C-n>:call NextNonTermBuf()<CR>', 'Next non-terminal buffer' },
 
     -- Terminal
-    { 't', '<S-h><S-h><S-h>', '<C-\\><C-n>:bprev<CR>', 'TODO: Previous non-terminal buffer' },
-    { 't', '<S-l><S-l><S-l>', '<C-\\><C-n>:bnext<CR>', 'TODO: Next non-terminal buffer' },
+    { 't', '<S-h><S-h><S-h>', '<C-\\><C-n>:call PrevNonTermBuf()<CR>', 'Previous non-terminal buffer' },
+    { 't', '<S-l><S-l><S-l>', '<C-\\><C-n>:call NextNonTermBuf()<CR>', 'Next non-terminal buffer' },
     { 't', '<esc><esc>', '<C-\\><C-n>',           'Double <esc> to exit terminal mode' },
     { 'n', '<leader>t',  '<C-\\><C-n>:terminal<cr>', 'Open a terminal' },
     { { 'n', 't', }, '<C-b>s', '<C-\\><C-n>:split +terminal<cr>i',      'Open a terminal below' },
