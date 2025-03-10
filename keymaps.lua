@@ -30,7 +30,7 @@ local global_keymaps = {
     { { 'n', 'i', 'v', 'x', 't', }, '<A-l>', '<C-\\><C-n><C-w>l', 'Move to right window' },
 
     -- Toggle crosshair
-    { 'n', '<leader>ch', ':set invcuc | set invcul<CR>', 'Toggle crosshair' },
+    { 'n', '<leader>ch', ':windo set invcuc | windo set invcul<CR>', 'Toggle crosshair' },
 
     -- Keep cursor postion with J
     { 'n', 'J', 'mzJ`z', 'Keeps cursor in place when using `J`' },
