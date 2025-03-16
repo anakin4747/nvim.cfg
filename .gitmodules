@@ -25,3 +25,6 @@
 [submodule "pack/lazydev/start/lazydev"]
 	path = pack/lazydev/start/lazydev
 	url = https://github.com/folke/lazydev.nvim
+[submodule "nvim"]
+	path = nvim
+	url = https://github.com/neovim/neovim
