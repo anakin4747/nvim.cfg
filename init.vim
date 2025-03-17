@@ -8,5 +8,6 @@ runtime lsp.lua
 runtime next_buf.vim
 runtime options.vim
 runtime term.vim
+runtime test.vim
 runtime treesitter.lua
 runtime ZZ.vim

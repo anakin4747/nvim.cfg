@@ -74,6 +74,9 @@ local global_keymaps = {
     { 'n', '<leader>et', builtin.diagnostics,       'Open diagnostics in telescope window' },
     { 'n', '[d',         vim.diagnostic.goto_prev,  'Go to previous error' },
     { 'n', ']d',         vim.diagnostic.goto_next,  'Go to next error' },
+
+    -- Testing
+    { 'n', '<leader>v', ':RunTests<CR>', 'Run vim config tests' },
 }
 
 for _, keymap in ipairs(global_keymaps) do
