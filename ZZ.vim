@@ -12,7 +12,7 @@ function! ZZ()
         bwipeout! " Remove marks to buffer so that <C-o> won't work
     elseif &filetype == 'gitcommit'
         write
-        quit
+        bwipeout
     else
         silent! write
         bdelete
