@@ -111,7 +111,7 @@ function! NextTermBuf(...)
     " If not in a term buffer just go to last term buffer
     if &buftype != 'terminal'
         "echom "NextTermBuf: Not in terminal"
-        execute 'buffer' split(execute('filter /^term:\/\// buffers t'))[0]
+        silent! execute 'buffer' split(execute('filter /^term:\/\// buffers t'))[0]
         return
     endif
 
@@ -137,7 +137,7 @@ function! NextNonTermBuf(...)
     " If in a term buffer just go to last non-term buffer
     if &buftype == 'terminal'
         "echom "NextNonTermBuf: in terminal"
-        execute 'buffer' split(execute('filter! /^term:\/\// buffers t'))[0]
+        silent! execute 'buffer' split(execute('filter! /^term:\/\// buffers t'))[0]
         return
     endif
 
