@@ -12,10 +12,18 @@ help:
 	@./util/list-make-targets $(MAKEFILE_LIST)
 
 .PHONY: install
-install: install-scripts install-cfg submodules # Install plugins, configuration and scripts
+install: install-nvim install-scripts install-cfg submodules # Install neovim, plugins, configuration and scripts
 
 .PHONY: uninstall
 uninstall: uninstall-scripts uninstall-cfg # Uninstall configuration and scripts
+
+.PHONY: install-nvim
+install-nvim: $(THIS_DIR)/nvim/build/bin/nvim # Build and install neovim
+	sudo make CMAKE_INSTALL_PREFIX=$(PREFIX) -C nvim install
+
+$(THIS_DIR)/nvim/build/bin/nvim:
+	make CMAKE_BUILD_TYPE=Release
+	ln -s $(THIS_DIR)/nvim/build/compile_commands.json $(THIS_DIR)/nvim/compile_commands.json
 
 SUBMODULES := $(shell $(THIS_DIR)/util/gitmodules)
 
