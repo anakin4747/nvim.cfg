@@ -38,9 +38,6 @@ set undofile
 " No swapfiles or backups
 set noswapfile nobackup
 
-" Ignore vim modelines in files (I don't want others setting my options)
-set nomodeline
-
 " No intro message
 set shortmess+=I
 
