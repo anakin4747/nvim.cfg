@@ -66,6 +66,10 @@ function! GotoFile()
 
         let file = findfile(cfile, "**")
         if file == ''
+
+            " TODO Add git smart searching for files so that if I am in a git
+            " tree but not the toplevel it will still search the top level for
+            " me
             return
         endif
 
