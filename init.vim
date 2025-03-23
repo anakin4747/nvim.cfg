@@ -8,6 +8,7 @@ runtime keymaps.lua
 runtime lsp.lua
 runtime next_buf.vim
 runtime options.vim
+runtime resize.lua
 runtime term.vim
 runtime test.vim
 runtime treesitter.lua
