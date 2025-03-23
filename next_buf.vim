@@ -1,3 +1,6 @@
+" TODO: Fix this so that you don't get trapped in netrw when shuffling through
+" non-terminal buffers forcing you to switch to a terminal buffer to become
+" untrapped
 
 function! GetNextBuf(current, bufs, ...)
     if exists("a:1") && a:1
