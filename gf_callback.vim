@@ -55,10 +55,6 @@ function! TestGetPosRow()
     call assert_equal(expected, actual)
 endfunction
 
-" /bin/ls:12:12
-"
-" nvim:10:10
-
 function! GotoFile()
     let cfile = expand('<cfile>')
     let line = getline('.')
