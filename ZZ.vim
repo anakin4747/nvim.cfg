@@ -1,3 +1,4 @@
+" TODO: Figure out how to actually close a netrw buffer
 
 function! ZZ()
     if &buftype == 'help'
