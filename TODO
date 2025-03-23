@@ -4,3 +4,5 @@ Difftool with nvim server
 Have a nvim solution for :h terminal-osc7 instead of zshrc
 Contribute to treesitter parser for vimscript since it sucks for `%substitue///`
 Add LaTeX compiler support, look into filetype/ and compiler/ in :h rtp
+Compare the capabilities provided by lua snip to insert mode abbreviations
+Compare the capabilities provided by nvim-cmp to insert mode completions
