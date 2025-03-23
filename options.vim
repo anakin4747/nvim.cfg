@@ -15,7 +15,7 @@ set scrolloff=9 sidescrolloff=9
 set list
 
 " Tabbing
-set shiftwidth=4 tabstop=4 smartindent expandtab
+set shiftwidth=4 tabstop=4 smartindent
 
 " Clean UI
 set cmdheight=0 noshowcmd noruler noshowmode showtabline=0 laststatus=0
