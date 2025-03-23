@@ -77,6 +77,9 @@ local global_keymaps = {
 
     -- Testing
     { 'n', '<leader>v', ':RunTests<CR>', 'Run vim config tests' },
+
+    -- Sourcing config
+    { 'n', '<leader>s', ':source $MYVIMRC<CR>', 'Source vim config' },
 }
 
 for _, keymap in ipairs(global_keymaps) do
