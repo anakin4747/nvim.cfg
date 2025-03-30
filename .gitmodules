@@ -28,3 +28,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = https://github.com/neovim/neovim
+[submodule "pack/vim-dap/start/vim-dap"]
+	path = pack/vim-dap/start/vim-dap
+	url = https://github.com/anakin4747/vim-dap
