@@ -147,11 +147,6 @@ func s:StartDebug_internal(dict)
 
     let s:sourcewin = win_getid(winnr())
 
-    " Remember the old value of 'signcolumn' for each buffer that it's set in, so
-    " that we can restore the value for all buffers.
-    let b:save_signcolumn = &signcolumn
-    let s:signcolumn_buflist = [bufnr()]
-
     let s:save_columns = 0
     let s:allleft = 0
     let wide = 0
@@ -727,22 +722,6 @@ func s:EndDebugCommon()
 
     if exists('s:ptybuf') && s:ptybuf
         exe 'bwipe! ' . s:ptybuf
-    endif
-
-    " Restore 'signcolumn' in all buffers for which it was set.
-    call win_gotoid(s:sourcewin)
-    let was_buf = bufnr()
-    for bufnr in s:signcolumn_buflist
-        if bufexists(bufnr)
-            exe bufnr .. "buf"
-            if exists('b:save_signcolumn')
-                let &signcolumn = b:save_signcolumn
-                unlet b:save_signcolumn
-            endif
-        endif
-    endfor
-    if bufexists(was_buf)
-        exe was_buf .. "buf"
     endif
 
     call s:DeleteCommands()
@@ -1506,11 +1485,6 @@ func s:HandleCursor(msg)
             call sign_unplace('TermDebug', #{id: s:pc_id})
             call sign_place(s:pc_id, 'TermDebug', 'debugPC', fname,
                         \ #{lnum: lnum, priority: 110})
-            if !exists('b:save_signcolumn')
-                let b:save_signcolumn = &signcolumn
-                call add(s:signcolumn_buflist, bufnr())
-            endif
-            setlocal signcolumn=yes
         endif
     elseif !s:stopped || fname != ''
         call sign_unplace('TermDebug', #{id: s:pc_id})
