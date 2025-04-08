@@ -51,6 +51,9 @@
 " Author: Bram Moolenaar
 " Copyright: Vim license applies, see ":help license"
 
+" TODO: Fix map_K to be buffer local
+" TODO: Make :Evaluate write to a nicer hover menu
+
 " In case this gets sourced twice.
 if exists(':Termdebug')
     finish
@@ -141,9 +144,6 @@ func s:StartDebug_internal(dict)
     if exists('#User#TermdebugStartPre')
         doauto <nomodeline> User TermdebugStartPre
     endif
-
-    " Uncomment this line to write logging in "debuglog".
-    " call ch_logfile('debuglog', 'w')
 
     let s:sourcewin = win_getid(winnr())
 
@@ -287,7 +287,7 @@ func s:StartDebug_term(dict)
     let gdb_cmd += gdb_args
 
     execute 'new'
-    " call ch_log('executing "' . join(gdb_cmd) . '"')
+
     let s:gdb_job_id = termopen(gdb_cmd, {'on_exit': function('s:EndTermDebug')})
     if s:gdb_job_id == 0
         echoerr 'invalid argument (or job table is full) while opening gdb terminal window'
@@ -753,7 +753,6 @@ func s:EndPromptDebug(job_id, exit_code, event)
 
     call s:EndDebugCommon()
     unlet s:gdbwin
-    "call ch_log("Returning from EndPromptDebug()")
 endfunc
 
 " - CommOutput: disassemble $pc
@@ -889,7 +888,6 @@ func s:InstallCommands()
     command Program call s:GotoProgram()
     command Source call s:GotoSourcewinOrCreateIt()
     command Asm call s:GotoAsmwinOrCreateIt()
-    command Winbar call s:InstallWinbar()
 
     let map = 1
     if exists('g:termdebug_config')
@@ -910,15 +908,6 @@ func s:InstallCommands()
     endif
 
     if has('menu') && &mouse != ''
-        " install the window toolbar by default, can be disabled in the config
-        let winbar = 1
-        if exists('g:termdebug_config')
-            let winbar = get(g:termdebug_config, 'winbar', 1)
-        endif
-        if winbar
-            call s:InstallWinbar()
-        endif
-
         let popup = 1
         if exists('g:termdebug_config')
             let popup = get(g:termdebug_config, 'popup', 1)
@@ -939,21 +928,6 @@ func s:InstallCommands()
     let &cpo = save_cpo
 endfunc
 
-" let s:winbar_winids = []
-
-" Install the window toolbar in the current window.
-func s:InstallWinbar()
-    " if has('menu') && &mouse != ''
-    "   nnoremenu WinBar.Step   :Step<CR>
-    "   nnoremenu WinBar.Next   :Over<CR>
-    "   nnoremenu WinBar.Finish :Finish<CR>
-    "   nnoremenu WinBar.Cont   :Continue<CR>
-    "   nnoremenu WinBar.Stop   :Stop<CR>
-    "   nnoremenu WinBar.Eval   :Evaluate<CR>
-    "   call add(s:winbar_winids, win_getid(winnr()))
-    " endif
-endfunc
-
 " Delete installed debugger commands in the current window.
 func s:DeleteCommands()
     delcommand Break
@@ -971,7 +945,6 @@ func s:DeleteCommands()
     delcommand Program
     delcommand Source
     delcommand Asm
-    delcommand Winbar
 
     if exists('s:k_map_saved')
         if empty(s:k_map_saved)
@@ -984,20 +957,6 @@ func s:DeleteCommands()
     endif
 
     if has('menu')
-        " Remove the WinBar entries from all windows where it was added.
-        " let curwinid = win_getid(winnr())
-        " for winid in s:winbar_winids
-        "   if win_gotoid(winid)
-        "     aunmenu WinBar.Step
-        "     aunmenu WinBar.Next
-        "     aunmenu WinBar.Finish
-        "     aunmenu WinBar.Cont
-        "     aunmenu WinBar.Stop
-        "     aunmenu WinBar.Eval
-        "   endif
-        " endfor
-        " call win_gotoid(curwinid)
-        " let s:winbar_winids = []
 
         if exists('s:saved_mousemodel')
             let &mousemodel = s:saved_mousemodel
@@ -1349,7 +1308,6 @@ func s:GotoSourcewinOrCreateIt()
     if !win_gotoid(s:sourcewin)
         new
         let s:sourcewin = win_getid(winnr())
-        call s:InstallWinbar()
     endif
 endfunc
 
@@ -1472,7 +1430,6 @@ func s:HandleCursor(msg)
                     " TODO: find existing window
                     exe 'split ' . fnameescape(fname)
                     let s:sourcewin = win_getid(winnr())
-                    call s:InstallWinbar()
                 else
                     exe 'edit ' . fnameescape(fname)
                 endif
