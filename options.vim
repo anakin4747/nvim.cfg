@@ -9,7 +9,7 @@ set nowrap textwidth=79
 set virtualedit=all
 
 " Always keep the cursor 9 chars from the border
-set scrolloff=9 sidescrolloff=9
+set scrolloff=9 sidescrolloff=0
 
 " Show evil whitespace
 set list
