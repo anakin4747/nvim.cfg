@@ -31,3 +31,9 @@
 [submodule "pack/vim-dap/start/vim-dap"]
 	path = pack/vim-dap/start/vim-dap
 	url = https://github.com/anakin4747/vim-dap
+[submodule "pack/dbg.vim/start"]
+	path = pack/dbg.vim/start
+	url = https://github.com/anakin4747/dbg.vim
+[submodule "pack/dbg.vim/start/dbg.vim"]
+	path = pack/dbg.vim/start/dbg.vim
+	url = https://github.com/anakin4747/dbg.vim
