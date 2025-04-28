@@ -80,6 +80,9 @@ local global_keymaps = {
 
     -- Sourcing config
     { 'n', '<leader>s', ':source $MYVIMRC<CR>', 'Source vim config' },
+
+    -- : -> q:
+    { 'n', ':', 'q:i', 'Have qcolon replace colon' },
 }
 
 for _, keymap in ipairs(global_keymaps) do
