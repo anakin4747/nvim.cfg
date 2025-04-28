@@ -5,7 +5,7 @@ let gf_patterns = [
 \   '\v(cfile):(\d+)',
 \]
 
-function! GetPos(cfile, line, patterns)
+function! GetPos(cfile, line, patterns = g:gf_patterns)
     let pos = #{row: -1, col: -1}
 
     for pat in a:patterns
@@ -42,7 +42,7 @@ function! TestGetPosRowCol()
     let cfile = "scripts/dtc/pylibfdt/libfdt_wrap.c"
     let expected = #{row: 1262, col: 1}
 
-    let actual = GetPos(cfile, line, g:gf_patterns)
+    let actual = GetPos(cfile, line)
     call assert_equal(expected, actual)
 endfunction
 
@@ -81,7 +81,7 @@ function! GotoFile()
         execute "edit" cfile
     endif
 
-    let pos = GetPos(cfile, line, g:gf_patterns)
+    let pos = GetPos(cfile, line)
 
     if pos.row != -1
         if pos.col == -1
