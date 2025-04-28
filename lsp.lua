@@ -12,6 +12,7 @@ local default_ls_configs = {
     'dockerls',
     'ginko_ls',
     'gopls',
+    'jsonls',
     -- 'ltex',
     'lua_ls',
     'pyright',
