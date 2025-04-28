@@ -3,6 +3,7 @@
 let gf_patterns = [
 \   '\v(cfile):(\d+):(\d+)',
 \   '\v(cfile):(\d+)',
+\   '\v"(cfile)", line (\d+)',
 \]
 
 function! GetPos(cfile, line, patterns = g:gf_patterns)
@@ -50,6 +51,15 @@ function! TestGetPosRow()
     let line = "scripts/dtc/pylibfdt/libfdt_wrap.c:1262 note: declared here"
     let cfile = "scripts/dtc/pylibfdt/libfdt_wrap.c"
     let expected = #{row: 1262, col: -1}
+
+    let actual = GetPos(cfile, line, g:gf_patterns)
+    call assert_equal(expected, actual)
+endfunction
+
+function! TestGetPosFromPythonError()
+    let line = 'File "/home/kin/.local/lib/python3.13/site-packages/xdis/op_imports.py", line 212, in get_opcode_module'
+    let cfile = "/home/kin/.local/lib/python3.13/site-packages/xdis/op_imports.py"
+    let expected = #{row: 212, col: -1}
 
     let actual = GetPos(cfile, line, g:gf_patterns)
     call assert_equal(expected, actual)
