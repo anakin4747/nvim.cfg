@@ -1,5 +1,6 @@
 
 runtime abbrev.vim
+runtime ai.lua
 runtime autocmds.vim
 runtime color.vim
 runtime comment.vim

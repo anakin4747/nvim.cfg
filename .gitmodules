@@ -34,3 +34,6 @@
 [submodule "pack/dbg.vim/start/dbg.vim"]
 	path = pack/dbg.vim/start/dbg.vim
 	url = https://github.com/anakin4747/dbg.vim
+[submodule "pack/codecompanion/start/codecompanion"]
+	path = pack/codecompanion/start/codecompanion
+	url = https://github.com/olimorris/codecompanion.nvim.git
