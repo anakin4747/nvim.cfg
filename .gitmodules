@@ -37,3 +37,6 @@
 [submodule "pack/codecompanion/start/codecompanion"]
 	path = pack/codecompanion/start/codecompanion
 	url = https://github.com/olimorris/codecompanion.nvim.git
+[submodule "pack/copilot/start/copilot"]
+	path = pack/copilot/start/copilot
+	url = https://github.com/github/copilot.vim.git
